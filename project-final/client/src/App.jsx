@@ -9,6 +9,10 @@ import Dashboard from './pages/Dashboard';
 import ResumeBuilder from './pages/ResumeBuilder';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import AdminDashboard from './pages/AdminDashboard';
+import PublicResumeView from './pages/PublicResumeView';
+import AnalyticsDashboard from './pages/AnalyticsDashboard'; 
+import RecruiterPanel from './pages/RecruiterPanel';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
@@ -52,6 +56,31 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          <Route 
+            path="/admin" 
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/analytics" 
+            element={
+              <ProtectedRoute>
+                <AnalyticsDashboard />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/recruiter" 
+            element={
+              <ProtectedRoute>
+                <RecruiterPanel />
+              </ProtectedRoute>
+            } 
+          />
+          <Route path="/p/:id" element={<PublicResumeView />} />
         </Routes>
       </main>
     </div>
